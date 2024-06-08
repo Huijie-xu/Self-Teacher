@@ -33,7 +33,6 @@ with st.form("my_form"):
                         我遇到问题是:{question}"""},
                         ],
                         temperature=0.7,
-                        max_tokens=500,
                         top_p=0.95,
                         frequency_penalty=0.5,
                         presence_penalty=0.1,
