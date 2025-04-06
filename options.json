@@ -5,7 +5,8 @@
         "class": ["数学","语文","英语"],
         "grade": ["小学","初中","高中"],
         "input_text": "请输入你的问题",
-        "sub_text": "提交"
+        "sub_text": "提交",
+        "spinner_text": "加载解读中，请稍等......"
     },
     "EN": {
         "class_title": "Class",
@@ -13,6 +14,7 @@
         "class": ["Math", "Chiness", "English"],
         "grade": ["Primary School","Middle School","High School"],
         "input_text": "Please input your question",
-        "sub_text": "Submit"
+        "sub_text": "Submit",
+        "spinner_text": "Loading, please wait..."
     }
 }
