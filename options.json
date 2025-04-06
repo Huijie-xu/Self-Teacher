@@ -1,0 +1,18 @@
+{
+    "CN": {
+        "class_title": "科目",
+        "grade_title": "学级",
+        "class": ["数学","语文","英语"],
+        "grade": ["小学","初中","高中"],
+        "input_text": "请输入你的问题",
+        "sub_text": "提交"
+    },
+    "EN": {
+        "class_title": "Class",
+        "grade_title": "Grade",
+        "class": ["Math", "Chiness", "English"],
+        "grade": ["Primary School","Middle School","High School"],
+        "input_text": "Please input your question",
+        "sub_text": "Submit"
+    }
+}
