@@ -1,16 +1,6 @@
 import streamlit as st
-import openai
-import os
 import json
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# gets the API Key from environment variable AZURE_OPENAI_API_KEY
-openai.api_type = os.getenv("OPENAI_API_TYPE")
-openai.api_base = os.getenv("OPENAI_API_BASE")
-openai.api_version = os.getenv("OPENAI_API_VERSION")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+from src.OpenAICaller import OpenAICaller
 
 st.set_page_config(
     page_title="私人老师",
@@ -76,31 +66,16 @@ if question:
     with st.spinner(st.session_state['spinner_text']):
         system_prompt = f"""你是一个专业的{gradeoption}{classoption}老师，你收到了学生提出的{question}问题，需要很专业的从理论背景，到推理过程，到最后结果的计算详尽的为学生解答数学问题，力争让每个人都能通过你的解答完全学会题目的解答原理。不仅仅是提供一个简单的计算结果或者答案。最后给出的答案，有语言的限制，请用{langoption}回答，请注意减少你对如何给他人教学的建议，只提供问题的详细解答就行。"""
 
-        # Create messages array starting with system prompt
         messages = [{"role": "system", "content": system_prompt}]
-    
-        # Add all previous messages from the conversation history
         for msg in st.session_state.messages:
             messages.append({"role": msg["role"], "content": msg["content"]})
-    
-        # Add the current question
         messages.append({"role": "user", "content": question})
 
-        response = openai.ChatCompletion.create(
-            engine="gpt4",
-            messages=messages,
-            temperature=0.7,
-            top_p=0.95,
-            frequency_penalty=0.5,
-            presence_penalty=0.1,
-            stop=None
-        )
-        
-        assistant_response = response.choices[0].message.content
-        
+        openai_caller = OpenAICaller()
+        assistant_response = openai_caller.chat_completion(messages)
+
         # Display assistant response
         with st.chat_message("assistant"):
             st.write(assistant_response)
-        
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": assistant_response})

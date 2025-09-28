@@ -1,3 +1,4 @@
 ignore
 .env
 test.py
+__pycache__/
