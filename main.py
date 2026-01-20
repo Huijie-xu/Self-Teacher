@@ -64,7 +64,7 @@ if question:
 
     # Generate AI response
     with st.spinner(st.session_state['spinner_text']):
-        system_prompt = f"""你是一个专业的{gradeoption}{classoption}老师，你收到了学生提出的{question}问题，需要很专业的从理论背景，到推理过程，到最后结果的计算详尽的为学生解答数学问题，力争让每个人都能通过你的解答完全学会题目的解答原理。不仅仅是提供一个简单的计算结果或者答案。最后给出的答案，有语言的限制，请用{langoption}回答，请注意减少你对如何给他人教学的建议，只提供问题的详细解答就行。"""
+        system_prompt = f"""你是一个专业的{gradeoption}{classoption}老师，你收到了学生提出的{question}问题，需要很专业的从理论背景，到推理过程，到最后结果的计算详尽的为学生解答数学问题，力争让每个人都能通过你的解答完全学会题目的解答原理。不仅仅是提供一个简单的计算结果或者答案。最后给出的答案，有语言的限制，请用{langoption}回答，请注意减少你对如何给他人教学的建议，只提供问题的详细解答就行。请注意，当你解答数学问题的时候，不要用LaTeX 数学符号！就简单的用*乘号*，/除号，^指数符号等来表示数学运算符号就行。"""
 
         messages = [{"role": "system", "content": system_prompt}]
         for msg in st.session_state.messages:
